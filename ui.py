@@ -2,6 +2,7 @@
 from tkinter import filedialog as fd, CENTER
 from tkinter import Canvas, Frame, BOTH, Button, LEFT
 
+from constants import F_1, F_2, F_3, F_4, F_5, F_6, F_7, F_8, F_9
 from utils import read_file
 
 
@@ -63,7 +64,7 @@ class Interface(Frame):
         self.canvas.itemconfig(self.f_9[0], fill='white')
         self.canvas.itemconfig(self.error_msg, text='')
 
-    def change_color(self, data) -> None:
+    def change_color(self, data: dict) -> None:
         """Изменение цвета и вывод ошибок на экран"""
         self.canvas.itemconfig(self.f_1[0], fill=data['f_1'][0])
         self.canvas.itemconfig(self.f_2[0], fill=data['f_2'][0])
@@ -157,7 +158,7 @@ class Interface(Frame):
                 self.coords[0][0], self.coords[0][1], self.coords[0][0] + self.width, self.coords[0][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[0][0] + self.width // 2, self.coords[0][1] + self.height // 2,
-                                    text="1ДД1П")
+                                    text=F_1)
         )
 
         self.f_2 = (
@@ -165,7 +166,7 @@ class Interface(Frame):
                 self.coords[1][0], self.coords[1][1], self.coords[1][0] + self.width, self.coords[1][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[1][0] + self.width // 2, self.coords[1][1] + self.height // 2,
-                                    text="1ДД2П")
+                                    text=F_2)
         )
 
         self.f_3 = (
@@ -173,7 +174,7 @@ class Interface(Frame):
                 self.coords[2][0], self.coords[2][1], self.coords[2][0] + self.width, self.coords[2][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[2][0] + self.width // 2, self.coords[2][1] + self.height // 2,
-                                    text="1ДПДП")
+                                    text=F_3)
         )
 
         self.f_4 = (
@@ -181,7 +182,7 @@ class Interface(Frame):
                 self.coords[3][0], self.coords[3][1], self.coords[3][0] + self.width, self.coords[3][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[3][0] + self.width // 2, self.coords[3][1] + self.height // 2,
-                                    text="ДПД1СПНП")
+                                    text=F_4)
         )
 
         self.f_5 = (
@@ -189,7 +190,7 @@ class Interface(Frame):
                 self.coords[4][0], self.coords[4][1], self.coords[4][0] + self.width, self.coords[4][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[4][0] + self.width // 2, self.coords[4][1] + self.height // 2,
-                                    text="2ДД1П")
+                                    text=F_5)
         )
 
         self.f_6 = (
@@ -197,7 +198,7 @@ class Interface(Frame):
                 self.coords[5][0], self.coords[5][1], self.coords[5][0] + self.width, self.coords[5][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[5][0] + self.width // 2, self.coords[5][1] + self.height // 2,
-                                    text="2ДД2П")
+                                    text=F_6)
         )
 
         self.f_7 = (
@@ -205,7 +206,7 @@ class Interface(Frame):
                 self.coords[6][0], self.coords[6][1], self.coords[6][0] + self.width, self.coords[6][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[6][0] + self.width // 2, self.coords[6][1] + self.height // 2,
-                                    text="2ДПДП")
+                                    text=F_7)
         )
 
         self.f_8 = (
@@ -213,7 +214,7 @@ class Interface(Frame):
                 self.coords[7][0], self.coords[7][1], self.coords[7][0] + self.width, self.coords[7][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[7][0] + self.width // 2, self.coords[7][1] + self.height // 2,
-                                    text="ДПД2СПНП")
+                                    text=F_8)
         )
 
         self.f_9 = (
@@ -221,7 +222,7 @@ class Interface(Frame):
                 self.coords[8][0], self.coords[8][1], self.coords[8][0] + self.width, self.coords[8][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[8][0] + self.width // 2, self.coords[8][1] + self.height // 2,
-                                    text="5ДД1")
+                                    text=F_9)
         )
 
         self.canvas.pack(fill=BOTH, expand=True)
