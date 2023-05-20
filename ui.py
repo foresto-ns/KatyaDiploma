@@ -44,6 +44,8 @@ class Interface(Frame):
 
         # Открытие файла при помощи проводника
         f = fd.askopenfilename(filetypes=filetypes)
+        if not f:
+            return 
 
         # Передача название файла во вспомогательную функцию и получение ответа
         info = read_file(f)
@@ -81,76 +83,76 @@ class Interface(Frame):
         """Отрисовка интерфейса"""
         self.pack(fill=BOTH, expand=True)
 
-        self.canvas = Canvas(self)
+        self.canvas = Canvas(self, bg='#e8e8e8')
 
         # Инициализация сообщения об ошибке
         self.error_msg = self.canvas.create_text(350, 50, anchor=CENTER, text='', font=("Helvetica", 16),
                                                  fill='red')
 
         # Инициализация кнопок
-        btn = Button(self.canvas, text="Обработать файл", command=self.open_file)
+        btn = Button(self.canvas, text="Обработать файл", command=self.open_file, bg='white')
         btn.pack(side=LEFT, anchor='nw')
         btn_2 = Button(self.canvas, text="Очистить", command=self.clear)
         btn_2.pack(side=LEFT, anchor='nw')
 
         # Длинные горизонтальные
         self.canvas.create_line(0, self.coords[3][1] + self.height // 2, self.coords[3][0] + self.width + 100,
-                                self.coords[3][1] + self.height // 2, width=5)
+                                self.coords[3][1] + self.height // 2, width=5, fill='black')
         self.canvas.create_line(0, self.coords[6][1] + self.height // 2, self.coords[7][0] + self.width + 100,
-                                self.coords[7][1] + self.height // 2, width=5)
+                                self.coords[7][1] + self.height // 2, width=5, fill='black')
         # Вертикальные
         self.canvas.create_line((self.coords[0][0] + self.coords[1][0] + self.width) // 2,
                                 self.coords[2][1] + self.height // 2,
                                 (self.coords[0][0] + self.coords[1][0] + self.width) // 2,
                                 self.coords[0][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line((self.coords[1][0] + self.coords[3][0] + self.width) // 2,
                                 self.coords[2][1] + 2.5,
                                 (self.coords[1][0] + self.coords[3][0] + self.width) // 2,
                                 self.coords[1][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line((self.coords[4][0] + self.coords[5][0] + self.width) // 2,
                                 self.coords[6][1] + self.height // 2,
                                 (self.coords[4][0] + self.coords[5][0] + self.width) // 2,
                                 self.coords[4][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line((self.coords[5][0] + self.coords[7][0] + self.width) // 2,
                                 self.coords[6][1] + 2.5,
                                 (self.coords[5][0] + self.coords[7][0] + self.width) // 2,
                                 self.coords[5][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         # Короткие горизонтальные
         self.canvas.create_line(self.coords[0][0] + self.width,
                                 self.coords[0][1] + self.height // 2,
                                 (self.coords[0][0] + self.coords[1][0] + self.width) // 2 + 2.5,
                                 self.coords[0][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line(self.coords[1][0] + self.width,
                                 self.coords[1][1] + self.height // 2,
                                 (self.coords[1][0] + self.coords[3][0] + self.width) // 2 + 2.5,
                                 self.coords[1][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line(self.coords[4][0] + self.width,
                                 self.coords[4][1] + self.height // 2,
                                 (self.coords[4][0] + self.coords[5][0] + self.width) // 2 + 2.5,
                                 self.coords[4][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line(self.coords[5][0] + self.width,
                                 self.coords[5][1] + self.height // 2,
                                 (self.coords[5][0] + self.coords[7][0] + self.width) // 2 + 2.5,
                                 self.coords[5][1] + self.height // 2,
-                                width=5)
+                                width=5, fill='black')
         # Средние горизонтальные
         self.canvas.create_line((self.coords[0][0] + self.coords[1][0] + self.width) // 2,
                                 self.coords[2][1],
                                 (self.coords[1][0] + self.coords[3][0] + self.width) // 2,
                                 self.coords[2][1],
-                                width=5)
+                                width=5, fill='black')
         self.canvas.create_line((self.coords[4][0] + self.coords[5][0] + self.width) // 2,
                                 self.coords[6][1],
                                 (self.coords[5][0] + self.coords[7][0] + self.width) // 2,
                                 self.coords[6][1],
-                                width=5)
+                                width=5, fill='black')
 
         # Отрисовка прямоугольников и сохранение ссылок на фигуры и текст
         self.f_1 = (
@@ -158,7 +160,7 @@ class Interface(Frame):
                 self.coords[0][0], self.coords[0][1], self.coords[0][0] + self.width, self.coords[0][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[0][0] + self.width // 2, self.coords[0][1] + self.height // 2,
-                                    text=F_1)
+                                    text=F_1, fill='black')
         )
 
         self.f_2 = (
@@ -166,7 +168,7 @@ class Interface(Frame):
                 self.coords[1][0], self.coords[1][1], self.coords[1][0] + self.width, self.coords[1][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[1][0] + self.width // 2, self.coords[1][1] + self.height // 2,
-                                    text=F_2)
+                                    text=F_2, fill='black')
         )
 
         self.f_3 = (
@@ -174,7 +176,7 @@ class Interface(Frame):
                 self.coords[2][0], self.coords[2][1], self.coords[2][0] + self.width, self.coords[2][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[2][0] + self.width // 2, self.coords[2][1] + self.height // 2,
-                                    text=F_3)
+                                    text=F_3, fill='black')
         )
 
         self.f_4 = (
@@ -182,7 +184,7 @@ class Interface(Frame):
                 self.coords[3][0], self.coords[3][1], self.coords[3][0] + self.width, self.coords[3][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[3][0] + self.width // 2, self.coords[3][1] + self.height // 2,
-                                    text=F_4)
+                                    text=F_4, fill='black')
         )
 
         self.f_5 = (
@@ -190,7 +192,7 @@ class Interface(Frame):
                 self.coords[4][0], self.coords[4][1], self.coords[4][0] + self.width, self.coords[4][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[4][0] + self.width // 2, self.coords[4][1] + self.height // 2,
-                                    text=F_5)
+                                    text=F_5, fill='black')
         )
 
         self.f_6 = (
@@ -198,7 +200,7 @@ class Interface(Frame):
                 self.coords[5][0], self.coords[5][1], self.coords[5][0] + self.width, self.coords[5][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[5][0] + self.width // 2, self.coords[5][1] + self.height // 2,
-                                    text=F_6)
+                                    text=F_6, fill='black')
         )
 
         self.f_7 = (
@@ -206,7 +208,7 @@ class Interface(Frame):
                 self.coords[6][0], self.coords[6][1], self.coords[6][0] + self.width, self.coords[6][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[6][0] + self.width // 2, self.coords[6][1] + self.height // 2,
-                                    text=F_7)
+                                    text=F_7, fill='black')
         )
 
         self.f_8 = (
@@ -214,7 +216,7 @@ class Interface(Frame):
                 self.coords[7][0], self.coords[7][1], self.coords[7][0] + self.width, self.coords[7][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[7][0] + self.width // 2, self.coords[7][1] + self.height // 2,
-                                    text=F_8)
+                                    text=F_8, fill='black')
         )
 
         self.f_9 = (
@@ -222,7 +224,7 @@ class Interface(Frame):
                 self.coords[8][0], self.coords[8][1], self.coords[8][0] + self.width, self.coords[8][1] + self.height,
                 fill="white"),
             self.canvas.create_text(self.coords[8][0] + self.width // 2, self.coords[8][1] + self.height // 2,
-                                    text=F_9)
+                                    text=F_9, fill='black')
         )
 
         self.canvas.pack(fill=BOTH, expand=True)
